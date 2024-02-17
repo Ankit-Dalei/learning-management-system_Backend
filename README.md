@@ -3,8 +3,11 @@
 2. Ide(STS,INTELLIJ)
 # Required Changes After Cloning into Own Local Machine.
 <h3>step-1</h3> 
-- go to the application.properties file
-- create one new schema for the project.
-- change your database username and password.
-- if necessary to change your port, assign port as per availability.
+<ul>
+  <li>go to the application.properties file</li>
+  <li>create one new schema for the project.</li>
+  <li>change your database username and password.</li>
+  <li>if necessary to change your port, assign port as per availability.</li>
+</ul>
+
 
