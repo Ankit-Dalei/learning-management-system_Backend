@@ -2,7 +2,7 @@
 1. Jdk 17
 2. Ide(STS,INTELLIJ)
 # Required Changes After Cloning into Own Local Machine.
-<h3>step-1</h3> 
+<h3>Steps</h3> 
 <ul>
   <li>go to the application.properties file</li>
   <li>create one new schema for the project.</li>
