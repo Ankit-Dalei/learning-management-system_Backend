@@ -18,7 +18,7 @@ public class State {
 	@ManyToOne
 	@JoinColumn(name = "adminId")
 	private Admin admin;
-    @OneToMany(mappedBy = "state",cascade = CascadeType.ALL)
-    private Set<Campus> campuses;
+	@OneToMany(mappedBy = "state",cascade = CascadeType.ALL)
+	private Set<Campus> campuses;
 
 } 
