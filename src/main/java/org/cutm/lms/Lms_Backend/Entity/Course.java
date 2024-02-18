@@ -10,4 +10,6 @@ public class Course {
     private Long courseId;
     private String courseName;
     private String courseCategory;
+    @OneToMany
+    private Set<Faculty> faculty;
 }
