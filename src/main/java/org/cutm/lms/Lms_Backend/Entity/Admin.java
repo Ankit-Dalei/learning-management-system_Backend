@@ -15,10 +15,11 @@ public class Admin {
 	private Long adminId;
 	private String adminEmail;
 	private String adminPasswd;
-	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
-	private Set<Sub_admin> subadmins;
-	
+
+//	@OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+//	private Set<Sub_admin> subadmins;
+
 	@OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
 	private Set<State> states;
-    
+
 }
