@@ -3,6 +3,9 @@
 2. Clone the Forked Repository to local Machine.
 3. Make changes and commit.
 4. To add codes in the Main Repositroy , use Sync Fork.
+# See the Preview
+<img src="![image](https://github.com/Ankit-Dalei/learning-management-system_Backend/assets/95074176/3bcb2a0a-868e-4b93-9118-e39267349e45)" alt="img" >
+
 # Basic Set up Requirement
 1. Jdk 17
 2. Ide(STS,INTELLIJ)
