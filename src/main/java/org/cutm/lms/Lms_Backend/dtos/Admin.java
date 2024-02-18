@@ -1,6 +1,4 @@
 package org.cutm.lms.Lms_Backend.dtos;
-
-import jakarta.persistence.*;
 import lombok.*;
 import org.cutm.lms.Lms_Backend.Entity.State;
 import org.cutm.lms.Lms_Backend.Entity.Sub_admin;
