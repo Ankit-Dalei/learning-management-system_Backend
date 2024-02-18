@@ -6,7 +6,8 @@
 
 # Basic Set up Requirement
 1. Jdk 17
-2. Ide(STS,INTELLIJ)
+2. Mysql
+3. Ide(STS,INTELLIJ)
 # Required Changes After Cloning into Own Local Machine.
 <h3>Steps</h3> 
 <ul>
