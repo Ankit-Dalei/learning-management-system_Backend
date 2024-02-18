@@ -13,6 +13,4 @@ public class Campus {
 	@ManyToOne
 	@JoinColumn(name = "stateId")
 	private State state;
-	@OneToOne
-	private Management management;
 }
