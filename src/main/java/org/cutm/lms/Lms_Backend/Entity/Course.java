@@ -1,5 +1,15 @@
 package org.cutm.lms.Lms_Backend.Entity;
 
-public class Course {
+import java.util.Set;
 
+import jakarta.persistence.*;
+@Entity
+public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long courseId;
+    private String courseName;
+    private String courseCategory;
+    @OneToMany
+    private Set<Faculty> faculty;
 }
