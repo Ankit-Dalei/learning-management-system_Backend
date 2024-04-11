@@ -17,13 +17,12 @@ import java.util.Set;
 @NoArgsConstructor
 public class User {
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String UserId;
         private String UserEmail;
         private String UserPasswd;
 
-        @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-        private Set<UserRole> roles = new HashSet<>();
+//        @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//        private Set<UserRole> roles = new HashSet<>();
 
 
 }
