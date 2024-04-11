@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Date;
+
 @SpringBootApplication
 public class LmsBackendApplication implements CommandLineRunner {
 	@Autowired
@@ -23,7 +25,6 @@ public class LmsBackendApplication implements CommandLineRunner {
 		UserRole hod = UserRole.builder().RoleId("03").RoleName("hod").build();
 		UserRole faculty = UserRole.builder().RoleId("04").RoleName("faculty").build();
 		UserRole student = UserRole.builder().RoleId("99").RoleName("student").build();
-
 		roleRepo.save(admin);
 		roleRepo.save(management);
 		roleRepo.save(hod);

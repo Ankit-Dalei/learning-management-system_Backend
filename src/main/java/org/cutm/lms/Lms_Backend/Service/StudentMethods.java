@@ -5,10 +5,10 @@ import org.cutm.lms.Lms_Backend.Entity.Student;
 import java.util.List;
 
 public interface StudentMethods {
-    Student createStudent();
+    Student createStudent(Student student);
 
     //get the particular Student
-    Student getAdminById();
+    Student getStudent(String studentId);
 
     //List of Student
     List<Student> getAllStudent();
@@ -17,5 +17,5 @@ public interface StudentMethods {
     void deleteStudent(String id);
 
     //update the Student
-    Student updateStudent(String id,Student updatedAdmin);
+    Student updateStudent(String id,Student student);
 }

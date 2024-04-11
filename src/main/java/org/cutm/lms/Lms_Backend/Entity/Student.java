@@ -1,11 +1,14 @@
 package org.cutm.lms.Lms_Backend.Entity;
 
-import java.util.Set;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -22,6 +25,6 @@ public class Student {
     private String stBranch;
     private String stSection;
     private String stBatch;
-
-
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<UserRole> roles = new HashSet<>();
 }
