@@ -56,6 +56,19 @@ public class StudentService implements StudentMethods {
 
     @Override
     public Student updateStudent(String id, Student student) {
-        return null;
+        Student stud = studentRepo.findById(id).orElseThrow(()->new RuntimeException("Student not found"));
+        stud.setStName(student.getStName());
+        stud.setStEmail(student.getStEmail());
+        stud.setStPhone(student.getStPhone());
+        stud.setStBranch(student.getStBranch());
+        stud.setStBatch(student.getStBatch());
+        stud.setStPasswd(student.getStPasswd());
+        stud.setStSection(student.getStSection());
+        return stud;
+
+
+
+
+
     }
 }

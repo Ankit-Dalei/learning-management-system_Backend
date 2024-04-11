@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -12,14 +15,15 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Faculty {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long facultyId;
+    private String facultyId;
     private String facultyEmail;
     private String facultyPasswd;
     private String ftName;
     private String ftPhone;
     private String ftBranch;
     private String ftRole;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<UserRole> roles = new HashSet<>();
 
 
 }
