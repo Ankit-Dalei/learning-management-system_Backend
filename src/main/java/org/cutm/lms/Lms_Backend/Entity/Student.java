@@ -17,7 +17,7 @@ public class Student {
     @OneToOne
     @JoinColumn(name = "branchId")
     private Branch branch;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "schoolId")
     private School school;
 

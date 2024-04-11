@@ -7,13 +7,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.*;
 
 //import jakarta.persistence.OneToOne;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 public class Branch {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long branchId;
+    private String branchId;
     private String branchName;
     @OneToMany
     private Set<Student> students;

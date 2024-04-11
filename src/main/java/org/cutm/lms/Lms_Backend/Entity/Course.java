@@ -6,8 +6,7 @@ import jakarta.persistence.*;
 @Entity
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long courseId;
+    private String courseId;
     private String courseName;
     private String courseCategory;
     @OneToMany

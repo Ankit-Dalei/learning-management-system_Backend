@@ -24,9 +24,8 @@ public class School {
     private Set<Faculty> faculties;
     @OneToMany
     private Set<Branch> branchList;
-
-    @OneToOne(mappedBy = "school")
-    private Student student;
+    @OneToMany(mappedBy = "school")
+    private Set<Student> student;
     @ManyToOne
     @JoinColumn(name = "managementId")
     private Management management;
