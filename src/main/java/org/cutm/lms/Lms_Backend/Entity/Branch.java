@@ -18,12 +18,13 @@ import lombok.*;
 @Entity
 public class Branch {
     @Id
-    private String branchId;
-    private String branchName;
-    @OneToMany
-    private Set<Student> students;
-    @OneToMany
-    private Set<Faculty> faculties;
+    private String bhId;
+    private String bhName;
+    private String bhDesc;
+
+
+
+
 
 
 }

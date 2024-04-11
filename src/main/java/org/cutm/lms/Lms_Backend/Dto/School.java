@@ -17,10 +17,6 @@ public class School {
     private Long schoolId;
     private String schoolName;
     private String schoolEmail;
-    private Set<Course> courses;
-    private Set<Student> students;
-    private Set<Faculty> faculties;
-    private Set<Branch> branchList;
     private Student student;
     private Management management;
 }

@@ -15,7 +15,6 @@ public class Student {
     private String studentName;
     private String studentEmail;
     private String studentPasswd;
-    private Set<Course> courses;
     private Branch branch;
     private School school;
 }

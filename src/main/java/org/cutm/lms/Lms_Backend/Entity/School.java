@@ -9,24 +9,25 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class School {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long schoolId;
-    private String schoolName;
-    private String schoolEmail;
-    @OneToMany
-    private Set<Course> courses;
-    @OneToMany
-    private Set<Student> students;
-    @OneToMany
-    private Set<Faculty> faculties;
-    @OneToMany
-    private Set<Branch> branchList;
-    @OneToMany(mappedBy = "school")
-    private Set<Student> student;
-    @ManyToOne
-    @JoinColumn(name = "managementId")
-    private Management management;
+    private Long scId;
+    private String scName;
+    private String scEmail;
+    private String scBranches;
+    private String scShort;
+    private String scDesc;
+
+
 }

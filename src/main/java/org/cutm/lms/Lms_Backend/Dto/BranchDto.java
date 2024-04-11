@@ -15,6 +15,5 @@ import org.cutm.lms.Lms_Backend.Entity.Student;
 public class BranchDto {
     private String branchId;
     private String branchName;
-    private Set<Student> students;
-    private Set<Faculty> faculties;
+
 }

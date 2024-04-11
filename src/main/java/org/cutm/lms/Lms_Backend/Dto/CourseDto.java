@@ -12,6 +12,5 @@ public class CourseDto {
     private String courseId;
     private String courseName;
     private String courseCategory;
-    private Set<Faculty> faculty;
 }
 
