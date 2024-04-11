@@ -16,7 +16,6 @@ public class School {
     private Long schoolId;
     private String schoolName;
     private String schoolEmail;
-
     @OneToMany
     private Set<Course> courses;
     @OneToMany
