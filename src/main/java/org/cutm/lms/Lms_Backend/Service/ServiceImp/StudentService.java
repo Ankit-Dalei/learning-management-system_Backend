@@ -3,6 +3,7 @@ package org.cutm.lms.Lms_Backend.Service.ServiceImp;
 import org.cutm.lms.Lms_Backend.Entity.Student;
 //import org.cutm.lms.Lms_Backend.Entity.User;
 import org.cutm.lms.Lms_Backend.Entity.UserRole;
+import org.cutm.lms.Lms_Backend.Exception.ResourceNotFound;
 import org.cutm.lms.Lms_Backend.Repository.StudentRepo;
 import org.cutm.lms.Lms_Backend.Repository.UserRepo;
 import org.cutm.lms.Lms_Backend.Service.StudentMethods;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -37,8 +39,12 @@ public class StudentService implements StudentMethods {
 
     @Override
     public Student getStudent(String studentId) {
-        Student student = studentRepo.findById(studentId).get();
-        return student;
+        Optional<Student> student = studentRepo.findById(studentId);
+        if (student.isPresent()){
+            return student.get();
+        }else{
+            throw new ResourceNotFound("Student","studentId",studentId);
+        }
     }
 
     @Override
@@ -56,7 +62,8 @@ public class StudentService implements StudentMethods {
 
     @Override
     public Student updateStudent(String id, Student student) {
-        Student stud = studentRepo.findById(id).orElseThrow(()->new RuntimeException("Student not found"));
+        Student stud = studentRepo.findById(id).orElseThrow(
+                ()->new ResourceNotFound("Student","id",id));
         stud.setStName(student.getStName());
         stud.setStEmail(student.getStEmail());
         stud.setStPhone(student.getStPhone());

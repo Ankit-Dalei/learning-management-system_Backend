@@ -35,8 +35,9 @@ public class StudentController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteStudent(@PathVariable String id){
+    public ResponseEntity<String> deleteStudent(@PathVariable String id){
         studentMethods.deleteStudent(id);
+        return new ResponseEntity<>("Student having "+id+"" + "deleted Successfully", HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("/{id}")

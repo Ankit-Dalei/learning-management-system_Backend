@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/cutm/faculty")
 public class FacultyController {
+
     @Autowired
     private FacultyMethods facultyMethods;
 
@@ -34,8 +35,10 @@ public class FacultyController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteFaculty(@PathVariable String id) {
+    public ResponseEntity<String> deleteFaculty(@PathVariable String id) {
         facultyMethods.deleteFaculty(id);
+        return new ResponseEntity<>("Faculty having "+id+"" +
+                "deleted Successfully", HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("/{id}")

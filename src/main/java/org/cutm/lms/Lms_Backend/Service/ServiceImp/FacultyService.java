@@ -1,8 +1,8 @@
 package org.cutm.lms.Lms_Backend.Service.ServiceImp;
 
 import org.cutm.lms.Lms_Backend.Entity.Faculty;
-import org.cutm.lms.Lms_Backend.Entity.Student;
 import org.cutm.lms.Lms_Backend.Entity.UserRole;
+import org.cutm.lms.Lms_Backend.Exception.ResourceNotFound;
 import org.cutm.lms.Lms_Backend.Repository.FacultyRepo;
 import org.cutm.lms.Lms_Backend.Repository.UserRepo;
 import org.cutm.lms.Lms_Backend.Service.FacultyMethods;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -38,8 +39,12 @@ public class FacultyService implements FacultyMethods {
 
     @Override
     public Faculty getFacultyById(String facultyId) {
-        Faculty faculty=facultyRepo.findById(facultyId).get();
-        return faculty;
+        Optional<Faculty> find = facultyRepo.findById(facultyId);
+        if (find.isPresent()){
+            return find.get();
+        }else{
+            throw new ResourceNotFound("Faculty","Id",facultyId);
+        }
     }
 
     @Override
@@ -56,18 +61,17 @@ public class FacultyService implements FacultyMethods {
 
     @Override
     public Faculty updateFaculty(String id, Faculty faculty) {
-        Faculty find=facultyRepo.findById(id).get();
-        if(find.getFacultyId()==faculty.getFacultyId()) {
-            find.setFacultyId(faculty.getFacultyId());
-            find.setFacultyPasswd(faculty.getFacultyPasswd());
-            find.setFtName(faculty.getFtName());
-            find.setFtPhone(faculty.getFtPhone());
-            find.setFtBranch(faculty.getFtBranch());
-            return find;
-        }else{
-            System.out.println("Faculty id not found");
-            return null;
-        }
+        Faculty find=facultyRepo.findById(id).orElseThrow(
+                ()->new ResourceNotFound("Faculty","id",id));
+
+        find.setFacultyId(faculty.getFacultyId());
+        find.setFacultyPasswd(faculty.getFacultyPasswd());
+        find.setFtName(faculty.getFtName());
+        find.setFtPhone(faculty.getFtPhone());
+        find.setFtBranch(faculty.getFtBranch());
+
+        return find;
+
 
     }
 }
