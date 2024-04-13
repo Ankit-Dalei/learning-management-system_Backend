@@ -1,5 +1,6 @@
 package org.cutm.lms.Lms_Backend.Controllers;
 
+import org.cutm.lms.Lms_Backend.Dto.StudentDto;
 import org.cutm.lms.Lms_Backend.Entity.Admin;
 import org.cutm.lms.Lms_Backend.Entity.Student;
 import org.cutm.lms.Lms_Backend.Service.StudentMethods;
@@ -17,21 +18,21 @@ public class StudentController {
     @Autowired
     private StudentMethods studentMethods;
     @PostMapping
-    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
-        Student student1 = studentMethods.createStudent(student);
+    public ResponseEntity<StudentDto> createStudent(@RequestBody StudentDto student) {
+        StudentDto student1 = studentMethods.createStudent(student);
         return  new ResponseEntity<>(student1, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Student> findbyid(@PathVariable String id) {
-        Student student1=studentMethods.getStudent(id);
-        return  new ResponseEntity<>(student1, HttpStatus.OK);
+    public ResponseEntity<StudentDto> findbyid(@PathVariable String id) {
+        StudentDto student = studentMethods.getStudent(id);
+        return  new ResponseEntity<>(student, HttpStatus.OK);
     }
 
     @GetMapping
-    public List<Student> findAll(){
-        List<Student> studentList=studentMethods.getAllStudent();
-        return studentList;
+    public List<StudentDto> findAll(){
+        List<StudentDto> allStudent = studentMethods.getAllStudent();
+        return allStudent;
     }
 
     @DeleteMapping("/{id}")
@@ -41,8 +42,8 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable String id,@RequestBody Student student) {
-        Student student1=studentMethods.updateStudent(id,student);
-        return  new ResponseEntity<>(student1, HttpStatus.ACCEPTED);
+    public ResponseEntity<StudentDto> updateStudent(@PathVariable String id,@RequestBody StudentDto student) {
+        StudentDto studentDto = studentMethods.updateStudent(id, student);
+        return  new ResponseEntity<>(studentDto, HttpStatus.ACCEPTED);
     }
 }
