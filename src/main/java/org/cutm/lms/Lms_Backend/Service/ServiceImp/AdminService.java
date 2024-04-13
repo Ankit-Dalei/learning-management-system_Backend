@@ -24,7 +24,7 @@ public class AdminService implements AdminMethods {
 	@Override
 	public Admin getAdminById(Long id) {
 		Admin admin = adminRepo.findById(id).orElseThrow(
-				() -> new ResourceNotFound("Admin not exist with id : " + id)
+				() -> new ResourceNotFound("Admin not exist with id : "+id)
 		);
 		return admin;
 	}
