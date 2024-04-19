@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 
 @Entity
 @Getter
@@ -20,10 +22,22 @@ public class User {
         private String UserEmail;
         private String UserPasswd;
         //one  to one unidirectional mapping
-        @OneToOne(cascade = CascadeType.ALL)
-        private UserRole userRole;
+         @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+         @JoinTable(
+                 name = "user_roles",
+                 joinColumns = @JoinColumn(name="user_id"),
+                 inverseJoinColumns = @JoinColumn(name = "role_id")
+         )
+        private Set<UserRole> roles;
         public User(String email,String userPasswd){
             UserEmail = email;
             UserPasswd = userPasswd;
         }
+        public User(String userEmail,String userPasswd,String userName,Set<UserRole> role){
+            UserEmail = userEmail;
+            UserPasswd  = userPasswd;
+            UserName = userName;
+            roles = role;
+        }
+
 }
