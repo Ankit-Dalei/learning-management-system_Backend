@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -16,6 +18,8 @@ public class UserRole {
     @JsonIgnore
     private long RoleId;
     private String RoleName;
+@ManyToMany(mappedBy = "roles")
+    private Set<User> users;
     public UserRole(String roleName){
         RoleName = roleName;
     }
