@@ -17,4 +17,6 @@
   <li>if necessary to change your port, assign port as per availability.</li>
 </ul>
 
-# Testing
+# Written Api , find it in branch nsk
+1. Login Api - http://localhost:8080/api/login
+2. Register Api - http://localhost:8080/api/register
