@@ -29,6 +29,11 @@ public class User {
                  inverseJoinColumns = @JoinColumn(name = "role_id")
          )
         private Set<UserRole> roles;
+
+//one to one mapping with Admins
+//    @OneToOne
+//    @JoinColumn(name = "admin_id")
+//    private Admin admin;
         public User(String email,String userPasswd){
             UserEmail = email;
             UserPasswd = userPasswd;
