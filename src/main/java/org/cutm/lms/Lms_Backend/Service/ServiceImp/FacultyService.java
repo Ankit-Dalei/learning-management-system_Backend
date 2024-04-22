@@ -66,6 +66,8 @@ public class FacultyService implements FacultyMethods {
     public void deleteFaculty(String id) {
         Faculty faculty=facultyRepo.findById(id).get();
         facultyRepo.delete(faculty);
+        String facultyId = faculty.getFacultyId();
+        userRepo.deleteById(facultyId);
     }
 
     @Override

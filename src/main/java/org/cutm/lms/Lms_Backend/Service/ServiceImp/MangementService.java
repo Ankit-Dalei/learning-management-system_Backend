@@ -57,7 +57,8 @@ public class MangementService implements MangementMethods {
     public void deleteManagement(String mtId) {
         Management management=mangementRepo.findById(mtId).get();
         mangementRepo.delete(management);
-        userRepo.deleteById(management.getMtId());
+        String mtId1 = management.getMtId();
+        userRepo.deleteById(mtId1);
     }
 
     @Override
