@@ -30,7 +30,5 @@ public class LmsBackendApplication implements CommandLineRunner {
 		roleRepo.save(hod);
 		roleRepo.save(student);
 		roleRepo.save(faculty);
-
-
 	}
 }

@@ -67,6 +67,7 @@ public class StudentService implements StudentMethods {
     @Override
     public void deleteStudent(String id) {
         Student student = studentRepo.findById(id).get();
+        userRepo.deleteById(student.getStId());
         studentRepo.delete(student);
 
     }

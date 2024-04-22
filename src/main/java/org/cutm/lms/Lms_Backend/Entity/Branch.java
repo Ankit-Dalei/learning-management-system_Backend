@@ -15,7 +15,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-//@Entity
+@Entity
 public class Branch {
     @Id
     private String bhId;
