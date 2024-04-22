@@ -29,8 +29,7 @@ public class StudentService implements StudentMethods {
     private String studentRoleId;
     @Autowired
     private RoleRepo roleRepo;
-    @Autowired
-    private ModelMapper modelMapper;
+
 
     @Autowired
     private UserRepo userRepo;
@@ -52,17 +51,17 @@ public class StudentService implements StudentMethods {
     }
 
     @Override
-    public StudentDto getStudent(String studentId) {
+    public Student getStudent(String studentId) {
         Student found = studentRepo.findById(studentId).orElseThrow(() -> new ResourceNotFound("Student not found"));
-        return modelMapper.map(found, StudentDto.class);
+        return found;
 
     }
 
     @Override
-    public List<StudentDto> getAllStudent() {
+    public List<Student> getAllStudent() {
         List<Student> students = studentRepo.findAll();
-        List<StudentDto> collect = students.stream().map(object -> new ModelMapper().map(object, StudentDto.class)).collect(Collectors.toList());
-        return collect;
+
+        return students;
     }
 
     @Override
@@ -73,7 +72,7 @@ public class StudentService implements StudentMethods {
     }
 
     @Override
-    public StudentDto updateStudent(String id, StudentDto student) {
+    public Student updateStudent(String id, Student student) {
         Student stud = studentRepo.findById(id).orElseThrow(
                 ()->new ResourceNotFound("Student","id",id));
         stud.setStName(student.getStName());
@@ -83,7 +82,7 @@ public class StudentService implements StudentMethods {
         stud.setStBatch(student.getStBatch());
         stud.setStPasswd(student.getStPasswd());
         stud.setStSection(student.getStSection());
-        StudentDto studentDto = modelMapper.map(stud, StudentDto.class);
-        return studentDto;
+
+        return stud;
     }
 }

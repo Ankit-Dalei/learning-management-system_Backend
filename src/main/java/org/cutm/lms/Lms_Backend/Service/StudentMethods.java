@@ -9,14 +9,14 @@ public interface StudentMethods {
     Student createStudent(Student student);
 
     //get the particular Student
-    StudentDto getStudent(String studentId);
+    Student getStudent(String studentId);
 
     //List of Student
-    List<StudentDto> getAllStudent();
+    List<Student> getAllStudent();
 
     //Delete the Student
     void deleteStudent(String id);
 
     //update the Student
-    StudentDto updateStudent(String id,StudentDto student);
+    Student updateStudent(String id,Student student);
 }
