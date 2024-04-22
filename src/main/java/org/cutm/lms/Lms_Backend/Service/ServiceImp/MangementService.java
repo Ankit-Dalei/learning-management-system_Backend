@@ -50,6 +50,10 @@ public class MangementService implements MangementMethods {
         m.setUniversityName(management.getUniversityName());
         m.setMtPhone(management.getMtPhone());
         mangementRepo.save(m);
+        User user = userRepo.findById(m.getMtId()).orElseThrow(() -> new ResourceNotFound("id not found"));
+        user.setUserPasswd(m.getMtPasswd());
+        user.setUserEmail(m.getMtEmail());
+        userRepo.save(user);
         return m;
     }
 
