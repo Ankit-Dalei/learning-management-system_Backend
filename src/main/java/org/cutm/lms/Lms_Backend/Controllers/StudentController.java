@@ -24,14 +24,14 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentDto> findbyid(@PathVariable String id) {
-        StudentDto student = studentMethods.getStudent(id);
+    public ResponseEntity<Student> findbyid(@PathVariable String id) {
+        Student student = studentMethods.getStudent(id);
         return  new ResponseEntity<>(student, HttpStatus.OK);
     }
 
     @GetMapping
-    public List<StudentDto> findAll(){
-        List<StudentDto> allStudent = studentMethods.getAllStudent();
+    public List<Student> findAll(){
+        List<Student> allStudent = studentMethods.getAllStudent();
         return allStudent;
     }
 
@@ -42,8 +42,8 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StudentDto> updateStudent(@PathVariable String id,@RequestBody StudentDto student) {
-        StudentDto studentDto = studentMethods.updateStudent(id, student);
-        return  new ResponseEntity<>(studentDto, HttpStatus.ACCEPTED);
+    public ResponseEntity<Student> updateStudent(@PathVariable String id,@RequestBody Student student) {
+        Student student1 = studentMethods.updateStudent(id, student);
+        return  new ResponseEntity<>(student1, HttpStatus.ACCEPTED);
     }
 }

@@ -82,7 +82,6 @@ public class StudentService implements StudentMethods {
         stud.setStBatch(student.getStBatch());
         stud.setStPasswd(student.getStPasswd());
         stud.setStSection(student.getStSection());
-
         return stud;
     }
 }
