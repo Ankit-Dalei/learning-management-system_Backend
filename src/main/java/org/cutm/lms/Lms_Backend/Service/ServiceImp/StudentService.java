@@ -3,8 +3,10 @@ package org.cutm.lms.Lms_Backend.Service.ServiceImp;
 import org.cutm.lms.Lms_Backend.Dto.StudentDto;
 import org.cutm.lms.Lms_Backend.Entity.Student;
 //import org.cutm.lms.Lms_Backend.Entity.User;
+import org.cutm.lms.Lms_Backend.Entity.User;
 import org.cutm.lms.Lms_Backend.Entity.UserRole;
 import org.cutm.lms.Lms_Backend.Exception.ResourceNotFound;
+import org.cutm.lms.Lms_Backend.Repository.RoleRepo;
 import org.cutm.lms.Lms_Backend.Repository.StudentRepo;
 import org.cutm.lms.Lms_Backend.Repository.UserRepo;
 import org.cutm.lms.Lms_Backend.Service.StudentMethods;
@@ -26,22 +28,27 @@ public class StudentService implements StudentMethods {
     @Value("${student.role.id}")
     private String studentRoleId;
     @Autowired
-    private UserRepo userRepo;
+    private RoleRepo roleRepo;
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private UserRepo userRepo;
+
     @Override
-    public StudentDto createStudent(StudentDto student) {
+    public Student createStudent(Student student) {
         String s="ST";
         String t = String.valueOf(new Date().getTime()).substring(10,13);
-//        System.out.println(t)
         student.setStId(s + UUID.randomUUID().toString().substring(0,4) +t);
-        UserRole userRole = userRepo.findById(studentRoleId).get();
-        student.getRoles().add(userRole);
-        Student mapped = modelMapper.map(student, Student.class);
-        Student save = studentRepo.save(mapped);
-        StudentDto studentDto = modelMapper.map(save, StudentDto.class);
-        return studentDto;
+//        UserRole userRole = roleRepo.findById(studentRoleId).get();
+//        student.getRoles().add(userRole);
+//        Student mapped = modelMapper.map(student, Student.class);
+//        Student save = studentRepo.save(mapped);
+//        StudentDto studentDto = modelMapper.map(save, StudentDto.class);
+        studentRepo.save(student);
+        User save=new User(student.getStId(),student.getStEmail(),student.getStPasswd());
+        userRepo.save(save);
+        return student;
     }
 
     @Override

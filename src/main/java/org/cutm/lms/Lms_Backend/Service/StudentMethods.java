@@ -1,11 +1,12 @@
 package org.cutm.lms.Lms_Backend.Service;
 
 import org.cutm.lms.Lms_Backend.Dto.StudentDto;
+import org.cutm.lms.Lms_Backend.Entity.Student;
 
 import java.util.List;
 
 public interface StudentMethods {
-    StudentDto createStudent(StudentDto student);
+    Student createStudent(Student student);
 
     //get the particular Student
     StudentDto getStudent(String studentId);

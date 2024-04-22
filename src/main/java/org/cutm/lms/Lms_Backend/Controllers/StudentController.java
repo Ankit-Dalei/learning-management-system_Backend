@@ -18,8 +18,8 @@ public class StudentController {
     @Autowired
     private StudentMethods studentMethods;
     @PostMapping
-    public ResponseEntity<StudentDto> createStudent(@RequestBody StudentDto student) {
-        StudentDto student1 = studentMethods.createStudent(student);
+    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
+        Student student1 = studentMethods.createStudent(student);
         return  new ResponseEntity<>(student1, HttpStatus.CREATED);
     }
 

@@ -21,7 +21,6 @@ public class Faculty {
     private String ftName;
     private String ftPhone;
     private String ftBranch;
-    private String ftRole;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<UserRole> roles = new HashSet<>();
 

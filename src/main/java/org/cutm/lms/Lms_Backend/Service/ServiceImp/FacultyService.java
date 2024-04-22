@@ -1,9 +1,11 @@
 package org.cutm.lms.Lms_Backend.Service.ServiceImp;
 
 import org.cutm.lms.Lms_Backend.Entity.Faculty;
+import org.cutm.lms.Lms_Backend.Entity.User;
 import org.cutm.lms.Lms_Backend.Entity.UserRole;
 import org.cutm.lms.Lms_Backend.Exception.ResourceNotFound;
 import org.cutm.lms.Lms_Backend.Repository.FacultyRepo;
+import org.cutm.lms.Lms_Backend.Repository.RoleRepo;
 import org.cutm.lms.Lms_Backend.Repository.UserRepo;
 import org.cutm.lms.Lms_Backend.Service.FacultyMethods;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class FacultyService implements FacultyMethods {
     private String facultyRoleId;
 
     @Autowired
+    private RoleRepo roleRepo;
+
+    @Autowired
     private UserRepo userRepo;
 
     @Override
@@ -32,8 +37,12 @@ public class FacultyService implements FacultyMethods {
         String s="FT";
         String t=String.valueOf(new Date().getTime()).substring(10,13);
         faculty.setFacultyId(s + UUID.randomUUID().toString().substring(0,4) +t);
-        UserRole userRole=userRepo.findById(facultyRoleId).get();
+//        UserRole userRole=roleRepo.findById(facultyRoleId).get();
+//        User user=userRepo.findById(faculty.getFacultyId()).get();
+//        roleRepo.save(userRole);
         Faculty save=facultyRepo.save(faculty);
+        User user1 = new User(save.getFacultyId(), save.getFacultyEmail(), save.getFacultyPasswd());
+        userRepo.save(user1);
         return save;
     }
 
