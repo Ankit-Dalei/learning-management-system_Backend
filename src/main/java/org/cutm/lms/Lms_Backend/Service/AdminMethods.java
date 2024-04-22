@@ -8,14 +8,14 @@ public interface AdminMethods {
     Admin createAdmin(Admin admin);
 
     //get the particular Admin
-    Admin getAdminById(Long id);
+    Admin getAdminById(String id);
 
     //List of Admins
     List<Admin> getAllAdmin();
 
     //Delete the Admin
-    void deleteAdmin(Long id);
+    void deleteAdmin(String id);
 
     //update the admin
-    Admin updateAdmin(Long id,Admin updatedAdmin);
+    Admin updateAdmin(String id,Admin updatedAdmin);
 }

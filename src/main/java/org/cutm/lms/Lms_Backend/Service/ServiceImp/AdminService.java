@@ -36,7 +36,7 @@ public class AdminService implements AdminMethods {
 	}
 
 	@Override
-	public Admin getAdminById(Long id) {
+	public Admin getAdminById(String id) {
 		Admin admin = adminRepo.findById(id).orElseThrow(
 				() -> new ResourceNotFound("Admin not exist with id : "+id)
 		);
@@ -50,13 +50,13 @@ public class AdminService implements AdminMethods {
 	}
 
 	@Override
-	public void deleteAdmin(Long id) {
+	public void deleteAdmin(String id) {
 		adminRepo.findById(id).orElseThrow(() -> new ResourceNotFound("Admin does not exist with id : " + id));
 		adminRepo.deleteById(id);
 	}
 
 	@Override
-	public Admin updateAdmin(Long id, Admin updatedAdmin) {
+	public Admin updateAdmin(String id, Admin updatedAdmin) {
 		Admin previousAdmin = adminRepo.findById(id).orElseThrow(
 				() -> new ResourceNotFound("Admin does not exist with id : " + id)
 		);
