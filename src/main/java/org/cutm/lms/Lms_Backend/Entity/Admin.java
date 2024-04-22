@@ -18,7 +18,6 @@ import org.hibernate.annotations.GenericGenerator;
 public class Admin {
 	@Id
 //	@GenericGenerator(name = "UUID", strategy = "org.cutm.lms.Lms_Backend.CustomIdGenerator")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String adminId;
 	private String adminEmail;
 	private String adminPasswd;
