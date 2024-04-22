@@ -78,6 +78,10 @@ public class FacultyService implements FacultyMethods {
         find.setFtName(faculty.getFtName());
         find.setFtPhone(faculty.getFtPhone());
         find.setFtBranch(faculty.getFtBranch());
+        User user = userRepo.findById(find.getFacultyId()).orElseThrow(()->new ResourceNotFound("User","id",find.getFacultyId()));
+        user.setUserPasswd(find.getFacultyPasswd());
+        user.setUserEmail(find.getFacultyEmail());
+        userRepo.save(user);
         return find;
 
 

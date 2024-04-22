@@ -83,6 +83,10 @@ public class StudentService implements StudentMethods {
         stud.setStBatch(student.getStBatch());
         stud.setStPasswd(student.getStPasswd());
         stud.setStSection(student.getStSection());
+        User user = userRepo.findById(stud.getStId()).orElseThrow(() -> new ResourceNotFound("Student", "id", id));
+        user.setUserPasswd(stud.getStPasswd());
+        user.setUserEmail(stud.getStEmail());
+        userRepo.save(user);
         return stud;
     }
 }
