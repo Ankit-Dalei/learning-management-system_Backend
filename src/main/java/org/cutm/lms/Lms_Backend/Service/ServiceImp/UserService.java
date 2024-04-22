@@ -1,15 +1,9 @@
 package org.cutm.lms.Lms_Backend.Service.ServiceImp;
 
 import org.cutm.lms.Lms_Backend.Dto.ApiResponse;
-import org.cutm.lms.Lms_Backend.Entity.Faculty;
-import org.cutm.lms.Lms_Backend.Entity.Management;
-import org.cutm.lms.Lms_Backend.Entity.Student;
-import org.cutm.lms.Lms_Backend.Entity.User;
+import org.cutm.lms.Lms_Backend.Entity.*;
 import org.cutm.lms.Lms_Backend.Exception.ResourceNotFound;
-import org.cutm.lms.Lms_Backend.Repository.FacultyRepo;
-import org.cutm.lms.Lms_Backend.Repository.MangementRepo;
-import org.cutm.lms.Lms_Backend.Repository.StudentRepo;
-import org.cutm.lms.Lms_Backend.Repository.UserRepo;
+import org.cutm.lms.Lms_Backend.Repository.*;
 import org.cutm.lms.Lms_Backend.Service.UserMethods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +24,9 @@ public class UserService implements UserMethods {
 
     @Autowired
     private MangementRepo mangementRepo;
+
+    @Autowired
+    private AdminRepo adminRepo;
 
     @Override
     public ApiResponse login(String userId, String password) {
@@ -63,11 +60,16 @@ public class UserService implements UserMethods {
 //                System.out.println(find);
                 find.setFacultyPasswd(save.getUserPasswd());
                 facultyRepo.save(find);
-            }else{
+            }else if(substring.equals("MT")){
                 Management find=mangementRepo.findById(userId).orElseThrow(
                         ()->new ResourceNotFound("Management","id",userId));
                 find.setMtPasswd(save.getUserPasswd());
                 mangementRepo.save(find);
+            }else{
+                Admin find=adminRepo.findById(userId).orElseThrow(
+                        ()->new ResourceNotFound("Admin","id",userId));
+                find.setAdminPasswd(save.getUserPasswd());
+                adminRepo.save(find);
             }
 
             return new ApiResponse("Updated Successfully", true, HttpStatus.ACCEPTED, save);

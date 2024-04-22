@@ -72,13 +72,10 @@ public class FacultyService implements FacultyMethods {
     public Faculty updateFaculty(String id, Faculty faculty) {
         Faculty find=facultyRepo.findById(id).orElseThrow(
                 ()->new ResourceNotFound("Faculty","id",id));
-
-        find.setFacultyId(faculty.getFacultyId());
         find.setFacultyPasswd(faculty.getFacultyPasswd());
         find.setFtName(faculty.getFtName());
         find.setFtPhone(faculty.getFtPhone());
         find.setFtBranch(faculty.getFtBranch());
-
         return find;
 
 
