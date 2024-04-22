@@ -32,9 +32,20 @@ public class SchoolController {
     }
 
     @GetMapping
-    public List<School> findAllManagement() {
+    public List<School> findAllSchool() {
         List<School> allSchools = schoolMethods.getAllSchools();
         return allSchools;
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteSchool(@PathVariable String id) {
+        schoolMethods.deleteSchool(id);
+        return new ResponseEntity<>("school having " + id + " deleted successfully", HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<School> updateSchool(@PathVariable String id,@RequestBody School school) {
+        School school1 = schoolMethods.updateSchool(id, school);
+        return new ResponseEntity<>(school1, HttpStatus.ACCEPTED);
     }
 
 
