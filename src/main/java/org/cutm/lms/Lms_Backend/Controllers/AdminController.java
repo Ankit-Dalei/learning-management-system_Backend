@@ -27,19 +27,19 @@ public class AdminController {
         return ResponseEntity.ok(admins);
     }
     @GetMapping("{id}")
-    public ResponseEntity<Admin> getAdminById(@PathVariable("id") Long id){
+    public ResponseEntity<Admin> getAdminById(@PathVariable("id") String id){
         Admin admin =  adminMethods.getAdminById(id);
         return ResponseEntity.ok(admin);
 
     }
     @PutMapping("{id}")
-    public ResponseEntity<Admin> updateAdmin(@PathVariable Long id,@RequestBody Admin admin) {
+    public ResponseEntity<Admin> updateAdmin(@PathVariable String id,@RequestBody Admin admin) {
         Admin admin1 = adminMethods.updateAdmin(id,admin);
         return ResponseEntity.ok(admin1);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteById(@PathVariable("id") Long id) {
+    public ResponseEntity<String> deleteById(@PathVariable("id") String id) {
         adminMethods.deleteAdmin(id);
         return ResponseEntity.ok("Admin deleted successfully of id");
     }
