@@ -14,7 +14,7 @@
 	<name>Lms_Backend</name>
 	<description>Backend Project for the Learning Management Project for Centurion University</description>
 	<properties>
-		<java.version>20</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
