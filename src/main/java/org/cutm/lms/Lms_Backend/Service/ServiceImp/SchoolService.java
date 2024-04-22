@@ -4,11 +4,12 @@ import org.cutm.lms.Lms_Backend.Entity.School;
 import org.cutm.lms.Lms_Backend.Repository.SchoolRepo;
 import org.cutm.lms.Lms_Backend.Service.SchoolMethods;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
+@Service
 public class SchoolService implements SchoolMethods {
     @Autowired
     private SchoolRepo schoolRepo;
