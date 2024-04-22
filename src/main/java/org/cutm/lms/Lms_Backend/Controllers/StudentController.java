@@ -1,7 +1,6 @@
 package org.cutm.lms.Lms_Backend.Controllers;
 
-import org.cutm.lms.Lms_Backend.Dto.StudentDto;
-import org.cutm.lms.Lms_Backend.Entity.Admin;
+
 import org.cutm.lms.Lms_Backend.Entity.Student;
 import org.cutm.lms.Lms_Backend.Service.StudentMethods;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cutm/student")
+@CrossOrigin("*")
 
 public class StudentController {
     @Autowired

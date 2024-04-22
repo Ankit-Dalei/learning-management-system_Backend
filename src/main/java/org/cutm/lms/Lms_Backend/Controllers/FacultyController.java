@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cutm/faculty")
+@CrossOrigin("*")
 public class FacultyController {
 
     @Autowired
