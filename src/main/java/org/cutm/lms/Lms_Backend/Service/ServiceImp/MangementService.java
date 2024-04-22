@@ -4,6 +4,7 @@ import org.cutm.lms.Lms_Backend.Entity.Management;
 import org.cutm.lms.Lms_Backend.Entity.User;
 import org.cutm.lms.Lms_Backend.Exception.ResourceNotFound;
 import org.cutm.lms.Lms_Backend.Repository.MangementRepo;
+import org.cutm.lms.Lms_Backend.Repository.UserRepo;
 import org.cutm.lms.Lms_Backend.Service.MangementMethods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ public class MangementService implements MangementMethods {
 
     @Autowired
     private MangementRepo mangementRepo;
+    @Autowired
+    private UserRepo userRepo;
 
     @Override
     public Management createManagement(Management management) {
@@ -26,6 +29,7 @@ public class MangementService implements MangementMethods {
         management.setDateCreated(LocalDate.now());
         mangementRepo.save(management);
         User save=new User(management.getMtId(),management.getMtEmail(),management.getMtPasswd());
+        userRepo.save(save);
         return management;
     }
 
