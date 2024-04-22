@@ -24,7 +24,6 @@ public class School {
     private String scId;
     private String scName;
     private String scEmail;
-    private String scBranches;
     private String scShort;
     private String scDesc;
 

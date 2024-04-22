@@ -30,16 +30,19 @@ public class SchoolService implements SchoolMethods {
         School found = schoolRepo.findById(mtId).orElseThrow(() -> new RuntimeException("School not found"));
         found.setScName(school.getScName());
         found.setScDesc(school.getScDesc());
+        found.setScEmail(school.getScEmail());
         return found;
     }
 
     @Override
     public void deleteSchool(String mtId) {
+        schoolRepo.deleteById(mtId);
 
     }
 
     @Override
     public List<School> getAllSchools() {
-        return List.of();
+        List<School> all = schoolRepo.findAll();
+        return all;
     }
 }
